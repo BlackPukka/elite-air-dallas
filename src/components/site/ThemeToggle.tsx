@@ -17,6 +17,7 @@ export function ThemeToggle() {
   };
   return (
     <button
+      type="button"
       onClick={toggle}
       aria-label="Toggle theme"
       className="btn-elite is-ghost size-10 p-0"

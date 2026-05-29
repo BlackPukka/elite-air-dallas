@@ -51,7 +51,7 @@
   --secondary: oklch(0.96 0.01 250);
   --secondary-foreground: oklch(0.22 0.06 265);
   --muted: oklch(0.96 0.01 250);
-  --muted-foreground: oklch(0.50 0.03 260);
+  --muted-foreground: oklch(0.5 0.03 260);
   --accent: oklch(0.95 0.02 250);
   --accent-foreground: oklch(0.22 0.06 265);
   --navy: oklch(0.22 0.06 265);
@@ -76,7 +76,7 @@
   --secondary: oklch(0.24 0.04 265);
   --secondary-foreground: oklch(0.97 0.01 250);
   --muted: oklch(0.24 0.04 265);
-  --muted-foreground: oklch(0.70 0.03 255);
+  --muted-foreground: oklch(0.7 0.03 255);
   --accent: oklch(0.28 0.05 265);
   --accent-foreground: oklch(0.97 0.01 250);
   --navy: oklch(0.16 0.04 265);
@@ -88,32 +88,58 @@
 }
 
 @layer base {
-  * { border-color: var(--color-border); }
-  html { scroll-behavior: smooth; }
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     font-feature-settings: "ss01", "cv11";
   }
-  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
 }
 
 @layer utilities {
-  .text-gold { color: var(--color-gold); }
-  .bg-navy { background-color: var(--color-navy); }
-  .text-navy { color: var(--color-navy); }
-  .bg-gold { background-color: var(--color-gold); }
-  .gradient-navy { background: linear-gradient(135deg, oklch(0.16 0.04 265), oklch(0.26 0.07 265)); }
-  .gradient-gold { background: linear-gradient(135deg, oklch(0.82 0.14 85), oklch(0.70 0.14 70)); }
+  .text-gold {
+    color: var(--color-gold);
+  }
+  .bg-navy {
+    background-color: var(--color-navy);
+  }
+  .text-navy {
+    color: var(--color-navy);
+  }
+  .bg-gold {
+    background-color: var(--color-gold);
+  }
+  .gradient-navy {
+    background: linear-gradient(135deg, oklch(0.16 0.04 265), oklch(0.26 0.07 265));
+  }
+  .gradient-gold {
+    background: linear-gradient(135deg, oklch(0.82 0.14 85), oklch(0.7 0.14 70));
+  }
   .text-gradient-gold {
     background: linear-gradient(135deg, oklch(0.86 0.14 88), oklch(0.72 0.14 70));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
-  .shadow-luxe { box-shadow: var(--shadow-luxe); }
-  .shadow-gold { box-shadow: var(--shadow-gold); }
+  .shadow-luxe {
+    box-shadow: var(--shadow-luxe);
+  }
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
   .glass {
     background: color-mix(in oklab, var(--color-background) 70%, transparent);
     backdrop-filter: blur(14px);
@@ -122,22 +148,57 @@
 }
 
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 @keyframes float-soft {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
-.animate-fade-up { animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
-.animate-fade-up { animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
-.animate-float { animation: float-soft 4s ease-in-out infinite; }
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.animate-float {
+  animation: float-soft 4s ease-in-out infinite;
+}
+.no-ligatures {
+  font-feature-settings:
+    "liga" 0,
+    "clig" 0;
+}
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
 .shimmer-gold {
-  background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--color-gold) 35%, transparent), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, var(--color-gold) 35%, transparent),
+    transparent
+  );
   background-size: 200% 100%;
   animation: shimmer 2.5s linear infinite;
 }
@@ -177,10 +238,12 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(115deg,
+  background: linear-gradient(
+    115deg,
     transparent 35%,
     color-mix(in oklab, white 8%, transparent) 50%,
-    transparent 65%);
+    transparent 65%
+  );
   opacity: 0;
   transition: opacity 400ms ease;
   z-index: -1;
@@ -191,8 +254,12 @@
     inset 0 0 0 1px color-mix(in oklab, var(--color-gold) 45%, transparent),
     inset 0 0 44px color-mix(in oklab, var(--color-gold) 12%, transparent);
 }
-.btn-elite:hover::before { opacity: 1; }
-.btn-elite:active { transform: translateY(1px); }
+.btn-elite:hover::before {
+  opacity: 1;
+}
+.btn-elite:active {
+  transform: translateY(1px);
+}
 .btn-elite:focus-visible {
   outline: none;
   box-shadow:
@@ -202,10 +269,11 @@
 
 /* Primary — engineered gold, grounded */
 .btn-elite.is-primary {
-  background:
-    linear-gradient(180deg,
-      color-mix(in oklab, var(--color-gold) 94%, white 6%),
-      color-mix(in oklab, var(--color-gold) 84%, black 8%));
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--color-gold) 94%, white 6%),
+    color-mix(in oklab, var(--color-gold) 84%, black 8%)
+  );
   color: var(--color-gold-foreground);
   box-shadow:
     inset 0 1px 0 color-mix(in oklab, white 35%, transparent),
@@ -235,9 +303,11 @@
 
 /* WhatsApp — emerald, grounded */
 .btn-elite.is-wa {
-  background: linear-gradient(180deg,
+  background: linear-gradient(
+    180deg,
     color-mix(in oklab, oklch(0.66 0.15 152) 92%, transparent),
-    color-mix(in oklab, oklch(0.54 0.15 152) 92%, transparent));
+    color-mix(in oklab, oklch(0.54 0.15 152) 92%, transparent)
+  );
   color: white;
   box-shadow:
     inset 0 1px 0 color-mix(in oklab, white 18%, transparent),
