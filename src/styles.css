@@ -1,0 +1,258 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-navy: var(--navy);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --font-display: "Playfair Display", "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --shadow-luxe: 0 30px 80px -20px color-mix(in oklab, var(--navy) 35%, transparent);
+  --shadow-gold: 0 20px 50px -15px color-mix(in oklab, var(--gold) 45%, transparent);
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.99 0.005 250);
+  --foreground: oklch(0.18 0.04 260);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.04 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.04 260);
+  --primary: oklch(0.22 0.06 265);
+  --primary-foreground: oklch(0.98 0.01 250);
+  --secondary: oklch(0.96 0.01 250);
+  --secondary-foreground: oklch(0.22 0.06 265);
+  --muted: oklch(0.96 0.01 250);
+  --muted-foreground: oklch(0.50 0.03 260);
+  --accent: oklch(0.95 0.02 250);
+  --accent-foreground: oklch(0.22 0.06 265);
+  --navy: oklch(0.22 0.06 265);
+  --gold: oklch(0.78 0.13 85);
+  --gold-foreground: oklch(0.22 0.06 265);
+  --destructive: oklch(0.58 0.22 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.92 0.01 255);
+  --input: oklch(0.92 0.01 255);
+  --ring: oklch(0.78 0.13 85);
+}
+
+.dark {
+  --background: oklch(0.14 0.03 265);
+  --foreground: oklch(0.97 0.01 250);
+  --card: oklch(0.19 0.04 265);
+  --card-foreground: oklch(0.97 0.01 250);
+  --popover: oklch(0.19 0.04 265);
+  --popover-foreground: oklch(0.97 0.01 250);
+  --primary: oklch(0.78 0.13 85);
+  --primary-foreground: oklch(0.16 0.04 265);
+  --secondary: oklch(0.24 0.04 265);
+  --secondary-foreground: oklch(0.97 0.01 250);
+  --muted: oklch(0.24 0.04 265);
+  --muted-foreground: oklch(0.70 0.03 255);
+  --accent: oklch(0.28 0.05 265);
+  --accent-foreground: oklch(0.97 0.01 250);
+  --navy: oklch(0.16 0.04 265);
+  --gold: oklch(0.82 0.14 85);
+  --gold-foreground: oklch(0.16 0.04 265);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.82 0.14 85);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+}
+
+@layer utilities {
+  .text-gold { color: var(--color-gold); }
+  .bg-navy { background-color: var(--color-navy); }
+  .text-navy { color: var(--color-navy); }
+  .bg-gold { background-color: var(--color-gold); }
+  .gradient-navy { background: linear-gradient(135deg, oklch(0.16 0.04 265), oklch(0.26 0.07 265)); }
+  .gradient-gold { background: linear-gradient(135deg, oklch(0.82 0.14 85), oklch(0.70 0.14 70)); }
+  .text-gradient-gold {
+    background: linear-gradient(135deg, oklch(0.86 0.14 88), oklch(0.72 0.14 70));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .shadow-luxe { box-shadow: var(--shadow-luxe); }
+  .shadow-gold { box-shadow: var(--shadow-gold); }
+  .glass {
+    background: color-mix(in oklab, var(--color-background) 70%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.animate-fade-up { animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-fade-up { animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-float { animation: float-soft 4s ease-in-out infinite; }
+.shimmer-gold {
+  background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--color-gold) 35%, transparent), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2.5s linear infinite;
+}
+
+/* ============================================================
+   ELITE ENGINEERED-GLASS BUTTON SYSTEM
+   Clean Engineered Minimal — seamless on navy, hover-only border
+   ============================================================ */
+.btn-elite {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border-radius: 6px;
+  background: color-mix(in oklab, white 3%, transparent);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  color: inherit;
+  cursor: pointer;
+  transition:
+    background-color 280ms ease,
+    box-shadow 380ms ease,
+    transform 200ms ease,
+    color 250ms ease;
+  /* Borderless at rest — only a whisper of inner glow */
+  box-shadow:
+    inset 0 0 0 1px color-mix(in oklab, white 4%, transparent),
+    inset 0 0 30px color-mix(in oklab, var(--color-gold) 4%, transparent);
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-elite::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(115deg,
+    transparent 35%,
+    color-mix(in oklab, white 8%, transparent) 50%,
+    transparent 65%);
+  opacity: 0;
+  transition: opacity 400ms ease;
+  z-index: -1;
+}
+.btn-elite:hover {
+  background: color-mix(in oklab, var(--color-gold) 6%, transparent);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in oklab, var(--color-gold) 45%, transparent),
+    inset 0 0 44px color-mix(in oklab, var(--color-gold) 12%, transparent);
+}
+.btn-elite:hover::before { opacity: 1; }
+.btn-elite:active { transform: translateY(1px); }
+.btn-elite:focus-visible {
+  outline: none;
+  box-shadow:
+    inset 0 0 0 1px color-mix(in oklab, var(--color-gold) 55%, transparent),
+    0 0 0 2px color-mix(in oklab, var(--color-gold) 22%, transparent);
+}
+
+/* Primary — engineered gold, grounded */
+.btn-elite.is-primary {
+  background:
+    linear-gradient(180deg,
+      color-mix(in oklab, var(--color-gold) 94%, white 6%),
+      color-mix(in oklab, var(--color-gold) 84%, black 8%));
+  color: var(--color-gold-foreground);
+  box-shadow:
+    inset 0 1px 0 color-mix(in oklab, white 35%, transparent),
+    inset 0 -1px 0 color-mix(in oklab, black 14%, transparent);
+}
+.btn-elite.is-primary:hover {
+  box-shadow:
+    inset 0 0 0 1px color-mix(in oklab, white 55%, transparent),
+    inset 0 1px 0 color-mix(in oklab, white 50%, transparent),
+    inset 0 -1px 0 color-mix(in oklab, black 18%, transparent),
+    inset 0 0 28px color-mix(in oklab, white 16%, transparent);
+}
+
+/* Ghost — translucent glass fully blended with surface */
+.btn-elite.is-ghost {
+  background: color-mix(in oklab, white 2.5%, transparent);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in oklab, white 4%, transparent),
+    inset 0 0 24px color-mix(in oklab, var(--color-gold) 3%, transparent);
+}
+.btn-elite.is-ghost:hover {
+  background: color-mix(in oklab, var(--color-gold) 5%, transparent);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in oklab, var(--color-gold) 38%, transparent),
+    inset 0 0 38px color-mix(in oklab, var(--color-gold) 10%, transparent);
+}
+
+/* WhatsApp — emerald, grounded */
+.btn-elite.is-wa {
+  background: linear-gradient(180deg,
+    color-mix(in oklab, oklch(0.66 0.15 152) 92%, transparent),
+    color-mix(in oklab, oklch(0.54 0.15 152) 92%, transparent));
+  color: white;
+  box-shadow:
+    inset 0 1px 0 color-mix(in oklab, white 18%, transparent),
+    inset 0 -1px 0 color-mix(in oklab, black 16%, transparent);
+}
+.btn-elite.is-wa:hover {
+  box-shadow:
+    inset 0 0 0 1px color-mix(in oklab, var(--color-gold) 50%, transparent),
+    inset 0 1px 0 color-mix(in oklab, white 26%, transparent),
+    inset 0 0 32px color-mix(in oklab, white 10%, transparent);
+}
+
+/* Icon-only square variant */
+.btn-elite.is-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+}
